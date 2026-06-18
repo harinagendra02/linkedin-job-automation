@@ -3,22 +3,37 @@ name: LinkedIn Automation
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   run:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - run: pip install -r requirements.txt
+      - name: Install Requirements
+        run: pip install -r requirements.txt
 
       - name: Create credentials.json
         run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
 
-      - run: python main.py
+      - name: Run Automation
+        run: python main.py
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+
+      - name: Commit seen_posts.txt
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add seen_posts.txt
+          git commit -m "Update seen posts" || echo "No changes to commit"
+          git push
