@@ -5,3 +5,5 @@ gspread
 oauth2client
 discord-webhook
 playwright
+gspread
+oauth2client
