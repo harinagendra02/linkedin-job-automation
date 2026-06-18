@@ -1,4 +1,11 @@
-from discord_sender import send_message
+from sheets import add_row
 
-send_message("Automation Test Successful")
-print("Discord message sent!")
+add_row([
+    "18-Jun-2026",
+    "TX",
+    "Test User",
+    "Need Java Developer GC Only",
+    "https://linkedin.com"
+])
+
+print("Google Sheet Updated")
