@@ -1,11 +1,17 @@
-from sheets import add_row
-
-add_row([
-    "18-Jun-2026",
-    "TX",
-    "Test User",
-    "Need Java Developer GC Only",
-    "https://linkedin.com"
-])
-
-print("Google Sheet Updated")
+Read links.txt
+       ↓
+For each LinkedIn Search URL
+       ↓
+Call Apify Actor
+       ↓
+Get Posts
+       ↓
+Check seen_posts.txt
+       ↓
+If New:
+      ↓
+Google Sheets
+      ↓
+Discord
+      ↓
+Save URL to seen_posts.txt
