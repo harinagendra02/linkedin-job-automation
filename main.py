@@ -1,17 +1,17 @@
-Read links.txt
+Read keywords.txt
        ↓
-For each LinkedIn Search URL
+For each keyword:
        ↓
-Call Apify Actor
+Run Apify Actor
        ↓
-Get Posts
+Get JSON results
        ↓
-Check seen_posts.txt
+For each post:
        ↓
-If New:
-      ↓
-Google Sheets
-      ↓
-Discord
-      ↓
-Save URL to seen_posts.txt
+post_url already seen?
+      / \
+    Yes  No
+     |     |
+ Ignore   Save to Sheet
+           Send to Discord
+           Add URL to seen_posts.txt
