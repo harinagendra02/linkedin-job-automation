@@ -16,6 +16,9 @@ jobs:
 
       - run: pip install -r requirements.txt
 
+      - name: Create credentials.json
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
+
       - run: python main.py
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
