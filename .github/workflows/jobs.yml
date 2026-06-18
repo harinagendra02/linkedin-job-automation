@@ -17,5 +17,7 @@ jobs:
           python-version: "3.12"
 
       - run: pip install -r requirements.txt
+      - name: Create credentials.json
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > credentials.json
 
       - run: python main.py
