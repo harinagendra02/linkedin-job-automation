@@ -14,3 +14,12 @@ run = client.actor("benjarapi/linkedin-post-search").call(
 
 print("Run ID:", run.id)
 print("Dataset ID:", run.default_dataset_id)
+
+dataset = client.dataset(run.default_dataset_id)
+
+items = list(dataset.iterate_items())
+
+print("Posts Found:", len(items))
+
+for post in items[:3]:
+    print(post)
